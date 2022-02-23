@@ -1,0 +1,478 @@
+body {
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.game-section {
+  padding: 0 10% 5%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.blur-grayscale{
+  filter: blur(6px) grayscale(1);
+}
+
+.grayscale {
+  filter: grayscale(1);
+}
+
+::selection {
+  background: rgba(255, 255, 128, 0);
+}
+
+.hidden {
+  display: none;
+}
+/************** BACKGROUND IMAGE ******************/
+.game-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.ytimg.com/vi/ajTTZ7iy6Ls/maxresdefault.jpg');
+  background-size: cover;
+  background-position: 60%;
+  filter: saturate(60%) brightness(0.75);
+}
+
+/*********************HEADING******************/
+.name-heading {
+  padding: 1% 0 0 0;
+  font-size: 600%;
+  letter-spacing: 6px;
+  text-align: center;
+  text-shadow: 0 -40px 100px, 0 0 1em #E900FF, 0 0 0.5em #E900FF, 0 0 0.1em #E900FF, 0 10px 3px #000000;
+  color: #FFE162;
+  position: relative;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ANIMATION OF THE NEON TEXT */
+.name-heading span>span {
+  text-shadow: 0 -40px 100px, 0 0 0.5em #E900FF, 0 0 0.5em #E900FF, 0 0 0.1em #E900FF, 0 10px 3px #000000;
+  color: #FFE162;
+  animation: blink linear 3 5s;
+}
+
+/* ! DIFFERENT ANIMATION */
+.name-heading span:nth-of-type(2) {
+  animation: blink linear infinite 9s;
+}
+
+@keyframes blink {
+  8% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  9% {
+    color: #333;
+  }
+
+  10% {
+    text-shadow: none;
+  }
+
+  11% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  12% {
+    color: #333;
+    text-shadow: none;
+  }
+
+  13% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+
+  22% {
+    color: #333;
+    text-shadow: none;
+  }
+
+  22.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+/************ RULES TEXT ****************/
+.game-rules-text {
+  position: relative;
+  text-align: center;
+  padding: 1.5% 5%;
+  margin: 1% 0 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #fff;
+  font-size: 110%;
+  filter: drop-shadow(5px 5px 4px #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 9px;
+}
+
+.game-rules-text p {
+  margin: 0;
+  padding: 0;
+}
+
+/***************** PLAYER CONTAINERS ***************/
+.players {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  margin-top: 3%;
+  align-self: center;
+}
+
+.player-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.player-heading {
+  font-family: 'Press Start 2P', cursive;
+  color: #FFE162;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-size: 200%;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
+}
+
+.input-and-button {
+  width: 280px;
+  margin: 2% 0 5%;
+  display: flex;
+  justify-content: center;
+}
+
+#input-player1, #input-player2 {
+  font-family: 'Press Start 2P', cursive;
+  min-width: 0;
+  font-size: 160%;
+}
+
+#check-button-player1, #check-button-player2 {
+  display: none;
+}
+
+.typical-button {
+  padding: 0 3%;
+  font-size: 160%;
+  background: linear-gradient(#FFE162, #E900FF);
+  filter: drop-shadow(5px 5px 4px #000);
+  border-radius: 1.3%;
+  border: solid #000;
+  color: #000;
+  cursor: pointer;
+}
+
+.check {
+  margin-left: 5%;
+}
+
+.typical-button:active {
+  filter: drop-shadow(1px 1px 3px #000);
+  transition-property: filter;
+  transition-duration: 0.05s;
+}
+
+/******************** MAKING OF DICES ****************/
+.cube-container {
+  margin: 15% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube {
+  transform-style: preserve-3d;
+  transform: rotate3d(1, 1, 0, -17deg);
+  position: relative;
+  height: 200px;
+  width: 200px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 2%;
+  background: linear-gradient(#FFE162, #E900FF);
+  border: solid black;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.front {
+  transform: translateZ(100px);
+  justify-content: center;
+  align-items: center;
+}
+
+.back {
+  transform: translateZ(-100px);
+  justify-content: space-between;
+}
+
+.back .dot:nth-child(2) {
+  align-self: flex-end;
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+  justify-content: space-between;
+}
+
+.left .dot:nth-child(3) {
+  align-self: flex-end;
+}
+
+.left .dot:nth-child(2) {
+  align-self: center;
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.top>.dot {
+  align-self: center;
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.row-cube {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dot {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 100%;
+  margin: 4%;
+}
+
+/*********************CLASSES FOR DIFFERENT OUTCOMES OF DICE FOR JS*****************/
+.outcome-1 {
+  transform: rotate3d(1, 1, 0, -17deg);
+  transform: rotate3d(1, -1, 0, -23deg);
+}
+
+.outcome-2 {
+  transform: rotate3d(6, -5, 0, 170deg);
+}
+
+.outcome-3 {
+  transform: rotate3d(1, 1, -1, 110deg);
+  transform: rotate3d(-1, 1, 1, 110deg);
+  transform: rotate3d(-2, 3, 2, 140deg);
+}
+
+.outcome-4 {
+  transform: rotate3d(1, -1, 1, 110deg);
+  transform: rotate3d(-1, -1, -1, 110deg);
+}
+
+.outcome-5 {
+  transform: rotate3d(-1, -1, 1, 110deg);
+}
+
+.outcome-6 {
+  transform: rotate3d(1, 1, 1, 110deg);
+}
+
+/** HEART-CONTAINERS AND HEARTS **/
+.lives {
+  display: flex;
+  width: 280px;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-image {
+  width: 20%;
+}
+
+/* **********************PLAY BUTTON****************** */
+.centering-button, .button label, .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+}
+
+.button label {
+  width: 250px;
+  height: 70px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 120%;
+  padding: 2% 3%;
+}
+
+#spin-button {
+  display: none;
+}
+
+/* ******************* CONGRATS CONTAINER *********** */
+.winner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: normal;
+}
+
+.end {
+  margin: 3% 0;
+  display: block;
+}
+
+#try-again {
+  width: auto;
+}
+
+/******************** FOOTER-SECTION *******************/
+.footer-section {
+  padding: 2% 0;
+  text-align: center;
+  color: #000;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  margin: 0 auto;
+  padding-bottom: 1%;
+  font-size: 120%;
+}
+
+a i {
+  color: #000;
+}
+
+.footer-info p {
+  margin: 0;
+}
+
+/***************** RESPONSIVNESS ADJUSTMENTS *************/
+@media screen and (min-width: 1024px) {
+  .dice-breakpoint {
+    display: none;
+  }
+}
+
+@media screen and (max-device-width: 1024px) {
+  .name-heading {
+    font-size: 700%;
+    white-space: normal;
+    padding-top: 8%;
+  }
+
+  .game-rules-text {
+    font-size: 140%;
+    margin-top: 3%;
+    padding-top: 3%;
+  }
+
+  .players {
+    margin-top: 20%;
+  }
+
+  .player-heading {
+    font-size: 250%;
+  }
+
+  .player-name {
+    font-size: 180%;
+  }
+
+  .cube {
+    width: 260px;
+    height: 260px;
+  }
+
+  .front {
+    transform: translateZ(130px);
+  }
+
+  .back {
+    transform: translateZ(-130px);
+  }
+
+  .left {
+    transform: rotateY(-90deg) translateZ(130px);
+  }
+
+  .right {
+    transform: rotateY(90deg) translateZ(130px);
+  }
+
+  .top {
+    transform: rotateX(90deg) translateZ(130px);
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ(130px);
+  }
+
+  .heart-image {
+    width: 30%;
+  }
+
+  .cube-container {
+    margin: 30% 0 20%;
+  }
+
+  .button {
+    height: 150px;
+    font-size: 170%;
+  }
+
+  .end {
+    margin: 7% 0;
+  }
+
+  .footer-section {
+    font-size: 170%;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .centering-button {
+    margin-top: 30%;
+  }
+}

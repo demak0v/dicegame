@@ -362,6 +362,8 @@ h1 {
 
 #try-again {
   width: auto;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 /******************** FOOTER-SECTION *******************/
